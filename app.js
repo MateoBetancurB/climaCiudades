@@ -80,17 +80,40 @@ function consultarAPI(ciudad, pais) {
 
 function mostrarClima(datos) {
 	const {
+		name,
 		main: { temp, temp_max, temp_min },
 	} = datos;
-	const centigrados = kelvinACentigrados(temp);
 
+	const temperaturaActual = kelvinACentigrados(temp);
+	const temperaturaMaxima = kelvinACentigrados(temp_max);
+	const temperaturaMinima = kelvinACentigrados(temp_min);
+
+	//imprime el nombre de la ciudad
+	const nombreCiudad = document.createElement("h1");
+	nombreCiudad.textContent = `${name}`;
+	nombreCiudad.classList.add("font-bold", "text-4xl");
+
+	//imprime temperatura actual
 	const actual = document.createElement("p");
-	actual.innerHTML = `Clima actual: ${centigrados} &#8451`;
-	actual.classList.add("font-bold", "text-5xl");
+	actual.innerHTML = `Temperatura Actual: ${temperaturaActual} &#8451`;
+	actual.classList.add("font-bold", "text-3xl");
+
+	//imprime temperatura maxima
+	const maxima = document.createElement("p");
+	maxima.innerHTML = `Temperatura Máxima: ${temperaturaMaxima} &#8451`;
+	maxima.classList.add("font-bold", "text-xl");
+
+	//imprime temperatura minima
+	const minima = document.createElement("p");
+	minima.innerHTML = `Temperatura Mínima: ${temperaturaMinima} &#8451`;
+	minima.classList.add("font-bold", "text-xl");
 
 	const resultadoDiv = document.createElement("div");
 	resultadoDiv.classList.add("text-center", "text-white");
+	resultadoDiv.appendChild(nombreCiudad);
 	resultadoDiv.appendChild(actual);
+	resultadoDiv.appendChild(maxima);
+	resultadoDiv.appendChild(minima);
 
 	resultado.appendChild(resultadoDiv);
 }
