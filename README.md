@@ -1,2 +1,2 @@
 # climaCuidades
-url de proyecto: https://clima-cuidades.netlify.app/
+url de proyecto: https://city-climate.netlify.app
